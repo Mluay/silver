@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  nameAr      String
+  slug        String    @unique
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Type {
+  id          String    @id @default(cuid())
+  nameAr      String
+  slug        String    @unique
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  nameAr        String
+  slug          String    @unique
+  shortDescAr   String?
+  descriptionAr String?
+  weightGrams   Float
+  priceIqd     Int
+  categoryId   String
+  typeId       String
+  gender       String
+  stoneType    String?
+  silverPurity String?
+  isActive     Boolean   @default(true)
+  isFeatured   Boolean   @default(false)
+  sortOrder    Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  category     Category  @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  type         Type      @relation(fields: [typeId], references: [id], onDelete: Restrict)
+  images       ProductImage[]
+  orderItems   OrderItem[]
+
+  @@index([categoryId])
+  @@index([typeId])
+  @@index([gender])
+  @@index([isActive])
+  @@index([isFeatured])
+}
+
+model ProductImage {
+  id          String   @id @default(cuid())
+  productId   String
+  url         String
+  storagePath String?
+  sortOrder   Int      @default(0)
+  isPrimary   Boolean  @default(false)
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  customerName  String
+  customerPhone String
+  address       String
+  notes         String?
+  status        String      @default("new")
+  totalIqd      Int
+  totalWeightGrams Float?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  productId   String
+  productName String
+  priceIqd    Int
+  quantity    Int
+  weightGrams Float
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}

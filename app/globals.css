@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: 13 92 61;
+  --accent-light: 15 122 77;
+  --accent-dark: 10 61 40;
+  --silver-50: 247 247 247;
+  --silver-900: 26 26 26;
+  --bg-page: 255 255 255;
+  --text-page: 26 26 26;
+  --text-muted: 81 81 81;
+  --border: 200 200 200;
+}
+
+.dark {
+  --accent: 42 157 143;
+  --accent-light: 56 189 170;
+  --accent-dark: 32 119 108;
+  --bg-page: 18 18 20;
+  --text-page: 234 234 234;
+  --text-muted: 163 163 163;
+  --border: 45 45 48;
+}
+
+@layer base {
+  html {
+    @apply font-arabic;
+  }
+  body {
+    @apply bg-white text-silver-900 antialiased dark:bg-[#121214] dark:text-[#eaeaea];
+  }
+}
+
+/* RTL support is default via dir="rtl" on html in layout */
