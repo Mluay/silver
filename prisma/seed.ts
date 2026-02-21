@@ -17,7 +17,7 @@ const IMAGES = {
   ringWomen: "https://images.unsplash.com/photo-1600428853194-7a26d3c57334?w=800&q=85",
   necklace: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=85",
   necklaceSilver: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=85",
-  bracelet: "https://images.unsplash.com/photo-1611652022419-a5819e42a7c3?w=800&q=85",
+  bracelet: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800&q=85",
   braceletSilver: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800&q=85",
   chain: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=800&q=85",
   earrings: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=85",

@@ -1,0 +1,23 @@
+# روابط سريعة لاختبار الموقع (افتح بعد تشغيل npm run dev أو npm run start)
+
+القاعدة: http://localhost:3000
+
+=== المتجر (الزبون) ===
+/                    الرئيسية
+/shop               المتجر
+/cart               السلة
+/checkout           إتمام الطلب
+/product/[slug]     صفحة منتج (استبدل [slug] بسلوق منتج حقيقي من المتجر)
+
+=== لوحة التحكم ===
+/admin/login        تسجيل الدخول
+/admin              لوحة التحكم (بعد الدخول)
+/admin/products     المنتجات
+/admin/products/new إضافة منتج
+/admin/categories   التصنيفات
+/admin/types        الأنواع
+/admin/orders       الطلبات
+
+=== تحقق ===
+[ ] كل الرابطات تفتح بدون خطأ 404 أو 500
+[ ] الأزرار والنماذج تعمل كما في PLAN_TEST_AND_DELIVERY.md
